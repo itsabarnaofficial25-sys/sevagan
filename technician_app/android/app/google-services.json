@@ -1,0 +1,86 @@
+{
+  "project_info": {
+    "project_number": "447182108664",
+    "project_id": "sevagan-firebase",
+    "storage_bucket": "sevagan-firebase.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:447182108664:android:7b2c7824aa3cd67e8dc80d",
+        "android_client_info": {
+          "package_name": "com.example.sevagan_customer"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDgTBdaWLpbSsQl0HcwuZlVvFQpBa79FT0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:447182108664:android:9fba8b1ce460989b8dc80d",
+        "android_client_info": {
+          "package_name": "com.example.sevagan_technician"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDgTBdaWLpbSsQl0HcwuZlVvFQpBa79FT0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:447182108664:android:460fc7b36c03cfe08dc80d",
+        "android_client_info": {
+          "package_name": "com.rohiltechnologies.sevagancustomer"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDgTBdaWLpbSsQl0HcwuZlVvFQpBa79FT0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:447182108664:android:678202459557757f8dc80d",
+        "android_client_info": {
+          "package_name": "com.rohiltechnologies.sevagantechnician"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDgTBdaWLpbSsQl0HcwuZlVvFQpBa79FT0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

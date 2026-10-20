@@ -1,0 +1,15 @@
+name: Validate Codebase
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Run DevSecOps Validator
+        uses: ./.github/actions/devsecops-validator

@@ -1,0 +1,171 @@
+<!DOCTYPE html><html><head>
+  <base href="$FLUTTER_BASE_HREF">
+
+  <meta charset="UTF-8">
+  <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+  <meta name="description" content="Sevagan Customer App">
+
+  <!-- Mobile Responsive -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+  <!-- Google Maps API KEY -->
+  <meta name="google-maps-api-key" content="YOUR_GOOGLE_MAPS_API_KEY">
+
+  <!-- iOS meta tags -->
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="sevagan_customer">
+  <link rel="apple-touch-icon" href="icons/Icon-192.png">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="favicon.png">
+
+  <title>Sevagan Customer App</title>
+  <link rel="manifest" href="manifest.json">
+
+  
+  
+  <style id="splash-screen-style">
+    html {
+      height: 100%
+    }
+
+    body {
+      margin: 0;
+      min-height: 100%;
+      background-color: #ffffff;
+          background-size: 100% 100%;
+    }
+
+    .center {
+      margin: 0;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      -ms-transform: translate(-50%, -50%);
+      transform: translate(-50%, -50%);
+    }
+
+    .contain {
+      display:block;
+      width:100%; height:100%;
+      object-fit: contain;
+    }
+
+    .stretch {
+      display:block;
+      width:100%; height:100%;
+    }
+
+    .cover {
+      display:block;
+      width:100%; height:100%;
+      object-fit: cover;
+    }
+
+    .bottom {
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      -ms-transform: translate(-50%, 0);
+      transform: translate(-50%, 0);
+    }
+
+    .bottomLeft {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+    }
+
+    .bottomRight {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+    }
+  </style>
+  <script id="splash-screen-script">
+    function removeSplashFromWeb() {
+      document.getElementById("splash")?.remove();
+      document.getElementById("splash-branding")?.remove();
+      document.body.style.background = "transparent";
+    }
+  </script>
+</head>
+
+<body>
+  <!-- ✅ Splash Screen REMOVED - No image shows on app open -->
+  <div id="splash" style="display:none;"></div>
+
+  <!-- ✅ reCAPTCHA Container -->
+  <div id="recaptcha-container"></div>
+
+  <!-- ✅ Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
+
+  <!-- ✅ Firebase Initialization -->
+  <script>
+    const firebaseConfig = {
+      apiKey: "AIzaSyDeIFJR_6164_nI4zC-h0k_PvKWWrdvnk0",
+      authDomain: "sevagan-firebase.firebaseapp.com",
+      projectId: "sevagan-firebase",
+      storageBucket: "sevagan-firebase.firebasestorage.app",
+      messagingSenderId: "447182108664",
+      appId: "1:447182108664:web:a3174fdab1c0ee5f8dc80d",
+      measurementId: "G-FG8JQV5KEG"
+    };
+    
+    firebase.initializeApp(firebaseConfig);
+    console.log('✅ Firebase initialized');
+
+    window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier('recaptcha-container');
+    console.log('✅ reCAPTCHA verifier created');
+  </script>
+
+  <script src="flutter_bootstrap.js"></script>
+
+  <!-- Razorpay script -->
+  <script>
+    window.openRazorpayCheckout = function (options, onSuccess, onError) {
+      function initRazorpay() {
+        if (typeof Razorpay === 'undefined') {
+          onError('Razorpay SDK not available.');
+          return;
+        }
+        var rzp = new Razorpay({
+          key: options.key,
+          amount: options.amount,
+          currency: options.currency || 'INR',
+          order_id: options.order_id,
+          name: options.name,
+          description: options.description,
+          prefill: {
+            contact: options.contact,
+            email: options.email
+          },
+          theme: { color: '#1565C0' },
+          handler: function (response) {
+            onSuccess(response.razorpay_payment_id, response.razorpay_signature);
+          },
+          modal: {
+            ondismiss: function () {
+              onError('Payment cancelled');
+            }
+          }
+        });
+        rzp.open();
+      }
+      if (typeof Razorpay !== 'undefined') {
+        initRazorpay();
+      } else {
+        var script = document.createElement('script');
+        script.src = 'https://checkout.razorpay.com/v1/checkout.js';
+        script.onload = initRazorpay;
+        script.onerror = function () {
+          onError('Failed to load Razorpay SDK');
+        };
+        document.head.appendChild(script);
+      }
+    };
+  </script>
+</body></html>
